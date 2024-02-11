@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+html,
+body {
+  background: rgb(238, 238, 238);
+  background: linear-gradient(90deg, rgba(238, 238, 238, 1) 1%, rgb(223, 228, 245) 100%);
+}

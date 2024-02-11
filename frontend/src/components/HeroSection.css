@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;1,300&family=Nunito&family=Ubuntu:wght@400;700&family=Unna:ital,wght@1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+.hero-outer-container {
+    position: relative;
+    width: 100%;
+    height: 700px;
+}
+
+.hero-background-container {
+    position: absolute;
+    width: 100%;
+    height: 700px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.hero-background-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.hero-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 170px;
+    align-items: center;
+    z-index: 2;
+    text-align: center;
+}
+
+.hero-header-h1 {
+    color: white;
+    font-size: 78px;
+    font-family: 'Unna', serif;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 40px rgba(209, 209, 209, 0.9);
+}
+
+.hero-header-p {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 28px;
+    letter-spacing: 1px;
+    text-shadow: .2px .2px .5px rgba(219, 219, 219, 0.7);
+    font-style: italic;
+    font-size: 35px;
+    font-family: 'Montserrat', serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.hero-header .hero-header-button {
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 20px;
+    background-color: white;
+    color: #1c2237;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    border: 3px solid #fff;
+    box-shadow: .5px .5px 1px rgba(219, 219, 219, 0.7);
+    transition: all .6s ease;
+}
+
+.hero-header .hero-header-button:hover {
+    color: white;
+    border: 3px solid #fff;
+    background-color: transparent;
+    transition: all .6s ease;
+    cursor: pointer;
+}
+
+@media (max-width: 1125px) {
+
+    .hero-header-h1 {
+        font-size: 65px;
+    }
+
+    .hero-header-p {
+        font-size: 24px;
+    }
+
+    .hero-header .hero-header-button {
+        padding: 14px 50px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1000px) {
+
+    .hero-header {
+        margin-top: 145px;
+    }
+
+    .hero-header-h1 {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
+@media (max-width: 790px) {
+
+    .hero-header {
+        margin-top: 160px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .hero-header-h1 {
+        font-size: 55px;
+        letter-spacing: 2px;
+    }
+
+    .hero-header-p {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+
+    .hero-header .hero-header-button {
+        padding: 10px 30px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 300px) {
+
+    .hero-header-h1 {
+        font-size: 40px;
+        letter-spacing: 2px;
+    }
+
+    .hero-header-p {
+        font-size: 15px;
+        margin-top: 20px;
+    }
+
+    .hero-header .hero-header-button {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+}

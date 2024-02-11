@@ -1,0 +1,42 @@
+.submission-success-message {
+    text-align: center;
+}
+
+.ssm-p1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.ssm-p2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.footer-return-home-button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background-color: white;
+    color: #1c2237;
+    border: 3px;
+    border-color: white;
+    border-style: solid;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.6s ease;
+}
+
+.footer-return-home-button:hover {
+    background-color: #1c2237;
+    color: white;
+    border: 3px;
+    border-style: solid;
+    border-color: white;
+    transition: all 0.6s ease;
+}

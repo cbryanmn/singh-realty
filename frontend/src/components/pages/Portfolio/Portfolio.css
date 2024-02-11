@@ -1,0 +1,92 @@
+.portfolio-page-container {
+    margin-bottom: 100px;
+}
+
+.portfolio-h1-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+    margin-bottom: 45px;
+    color: #1c2237;
+    text-align: center;
+}
+
+.portfolio-h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+    text-shadow: 4px 4px 10px #dddddf;
+    margin-top: 0;
+}
+
+.properties-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    width: 70%;
+    margin: auto;
+    justify-content: center;
+}
+
+.individual-property {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: calc(25% - 20px);
+    max-width: calc(25% - 20px);
+    margin-bottom: 15px;
+}
+
+.property-image {
+    height: 130px;
+    width: auto;
+    border-radius: 4%;
+    margin-bottom: 10px;
+}
+
+.property-info {
+    text-align: center;
+}
+
+.property-name-link {
+    font-family: 'Montserrat', sans-serif;
+    color: darkslategray;
+    text-decoration: none;
+}
+
+.property-city-link {
+    font-family: 'Montserrat', sans-serif;
+    color: darkslategray;
+    text-decoration: none;
+}
+
+@media (min-width: 751px) and (max-width: 1400px) {
+
+    .individual-property {
+        flex-basis: calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 750px) {
+
+    .individual-property {
+        flex-basis: calc(100% - 20px);
+        max-width: calc(100% - 20px);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .portfolio-h1 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .portfolio-h1 {
+        font-size: 36px;
+    }
+}

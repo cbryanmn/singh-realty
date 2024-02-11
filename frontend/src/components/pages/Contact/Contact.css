@@ -1,0 +1,142 @@
+.container-everything {
+    margin-bottom: 120px;
+}
+
+.contact-headline {
+    text-align: center;
+    margin-top: 70px;
+}
+
+.contact-headline-h1 {
+    margin: auto;
+    text-shadow: 4px 4px 10px #f0f0ff;
+    font-size: 50px;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-top: 45px;
+    margin-bottom: 80px;
+}
+
+.map-container {
+    flex-basis: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+.google-map-frame {
+    width: 100%;
+    height: 400px;
+}
+
+.business-contact-info-container {
+    flex-basis: 100%;
+    max-width: 400px;
+}
+
+.business-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    margin-bottom: 23px;
+    text-shadow: 4px 4px 10px #f0f0ff;
+}
+
+.business-address p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    margin-bottom: 2px;
+}
+
+.business-phone p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    margin-top: 23px;
+}
+
+.business-fax p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+}
+
+.business-email-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    margin-bottom: 2px;
+}
+
+.business-email p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.find-us-on-social-media p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.contact-social-icon {
+    color: black;
+    margin: 0 5px;
+}
+
+.business-hours-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    margin-bottom: 2px;
+    margin-top: 25px;
+}
+
+.business-hours p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+}
+
+@media screen and (max-width: 1400px) {
+
+    .map-img img {
+        margin-left: 7%;
+    }
+
+    .business-contact-info-container {
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 1088px) {
+
+    .contact-container {
+        max-width: 90%;
+        margin: auto;
+        margin-top: 45px;
+    }
+
+    .map-img img,
+    .business-contact-info-container {
+        flex-basis: 100%;
+        max-width: 90%;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .contact-headline-h1 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .contact-headline-h1 {
+        font-size: 36px;
+    }
+}

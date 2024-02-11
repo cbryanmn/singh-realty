@@ -1,0 +1,51 @@
+.aboutus-outer-container {
+    margin-bottom: 60px;
+}
+
+.about-us-headline {
+    text-align: center;
+    margin-top: 70px;
+}
+
+.about-us-headline-h1 {
+    margin: auto;
+    text-shadow: 4px 4px 10px #f0f0ff;
+    font-size: 50px;
+}
+
+.about-us-intro {
+    margin: auto;
+    width: 70%;
+}
+
+.au-i-p-1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    margin-top: 45px;
+}
+
+.au-i-p-2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.au-i-p-3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+}
+
+@media (max-width: 600px) {
+
+    .about-us-headline-h1 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .about-us-headline-h1 {
+        font-size: 36px;
+    }
+}

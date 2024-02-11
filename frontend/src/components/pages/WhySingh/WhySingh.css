@@ -1,0 +1,235 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.whysingh-outer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 45px;
+}
+
+.whysingh-h1 {
+    text-align: center;
+    margin-bottom: 55px;
+    margin-top: 70px;
+    text-shadow: 4px 4px 10px #f0f0ff;
+}
+
+.row-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.top-row {
+    display: flex;
+    justify-content: center;
+}
+
+.bottom-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
+    margin-bottom: 60px;
+}
+
+.whysingh-div1 {
+    height: 480px;
+    width: 300px;
+    background-color: #d7dffb;
+    border-radius: 3%;
+    box-shadow: 4px 4px 10px #dddddf;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 300px;
+    margin-right: 40px;
+}
+
+.whysingh-div2 {
+    background-color: #d7dffb;
+    border-radius: 3%;
+    box-shadow: 4px 4px 10px #dddddf;
+    height: 480px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 300px;
+}
+
+.whysingh-div3 {
+    background-color: #d7dffb;
+    border-radius: 3%;
+    box-shadow: 4px 4px 10px #dddddf;
+    height: 480px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 300px;
+    margin-left: 40px;
+}
+
+.whysingh-div4 {
+    background-color: #d7dffb;
+    border-radius: 3%;
+    box-shadow: 4px 4px 10px #dddddf;
+    height: 480px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 300px;
+    margin-right: 40px;
+}
+
+.whysingh-div5 {
+    background-color: #d7dffb;
+    border-radius: 3%;
+    box-shadow: 4px 4px 10px #dddddf;
+    height: 480px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 300px;
+}
+
+.whysingh-img-container {
+    height: 150px;
+    width: auto;
+    margin-top: 10%;
+}
+
+.whysingh-img-container img {
+    height: 150px;
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.top-line-container {
+    margin-top: 15px;
+}
+
+.top-line {
+    font-family: 'Nunito', sans-serif;
+    color: #f90046;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.headline-container {
+    margin-top: 11px;
+    text-align: center;
+    width: 85%;
+}
+
+.headline {
+    font-family: 'Nunito', sans-serif;
+    color: #1c2247;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+.desc-container {
+    margin-top: 10px;
+    text-align: center;
+    width: 88%;
+}
+
+.description {
+    font-family: 'Nunito', sans-serif;
+    color: #1c2247;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+@media (max-width: 1100px) {
+
+    .top-row,
+    .bottom-row {
+        flex-wrap: wrap;
+    }
+
+    .bottom-row {
+        margin-top: 0;
+    }
+
+    .whysingh-div1 {
+        flex-basis: calc(50% - 4%);
+        width: auto;
+        max-width: 300px;
+        margin: 4%;
+    }
+
+    .whysingh-div2 {
+        flex-basis: calc(50% - 4%);
+        width: auto;
+        max-width: 300px;
+        margin: 4%;
+    }
+
+    .whysingh-div3 {
+        flex-basis: calc(50% - 4%);
+        width: auto;
+        max-width: 300px;
+        /* margin-right: 0; */
+        margin: 4%;
+        height: 500px;
+    }
+
+    .whysingh-div4 {
+        flex-basis: calc(50% - 4%);
+        width: auto;
+        max-width: 300px;
+        margin: 4%;
+    }
+
+    .whysingh-div5 {
+        flex-basis: calc(50% - 4%);
+        width: auto;
+        max-width: 300px;
+        margin: 4%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .whysingh-div1 {
+        flex-basis: 100%;
+        width: auto;
+        margin: 1% 2%;
+    }
+
+    .whysingh-div2 {
+        flex-basis: 100%;
+        width: auto;
+        margin: 15% 2%;
+    }
+
+    .whysingh-div3 {
+        flex-basis: 100%;
+        width: auto;
+        margin: 0 2%;
+    }
+
+    .whysingh-div4 {
+        flex-basis: 100%;
+        width: auto;
+        margin: 15% 2%;
+    }
+
+    .whysingh-div5 {
+        flex-basis: 100%;
+        width: auto;
+        margin: 0 2%;
+    }
+}

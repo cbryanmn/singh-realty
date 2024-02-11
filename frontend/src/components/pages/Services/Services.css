@@ -1,0 +1,270 @@
+.services-outer-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.services-h1-container {
+    margin-top: 70px;
+}
+
+.services-h1 {
+    text-shadow: 4px 4px 10px #dddddf;
+    font-size: 50px;
+    margin-top: 0;
+}
+
+.service-intro-container {
+    width: 70%;
+}
+
+.service-intro-p {
+    margin-top: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.service-div-container {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    flex-wrap: nowrap;
+    width: auto;
+    max-width: 90%;
+    padding: 45px;
+    margin-top: 75px;
+    background-color: #f9f9f9;
+    border: 2px solid #264cd5;
+    border-radius: 15px;
+}
+
+.service-div1,
+.service-div2,
+.service-div3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 800px;
+    word-wrap: wrap;
+    background-color: #d7dffb;
+    border-radius: 15px;
+    padding: 30px;
+    padding-top: 30px;
+    box-shadow: 4px 4px 10px #dddddf;
+    text-align: center;
+}
+
+.service-div2,
+.service-div3 {
+    margin-left: 40px;
+}
+
+.service-div1,
+.service-div2 {
+    padding-top: 37px;
+}
+
+.service-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.service-pricing {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 20px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.service-pricing2 {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.service-pricing3 {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.services-list-items {
+    overflow-wrap: break-word;
+    text-align: center;
+    margin-top: 15px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+}
+
+.service-div-top-container {
+    height: min-content;
+}
+
+.service-div-button-container {
+    position: relative;
+    margin-top: auto;
+    margin-bottom: 45px;
+}
+
+.service-div-button {
+    border-radius: 30px;
+    background-color: #264cd5;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    box-shadow: 1px 1px 4px #b9b9ba;
+    text-shadow: .5px .5px 1px #b9b9ba;
+    transform: all 0.6s ease;
+    border: 1px solid #264cd5;
+    outline: none;
+    text-decoration: none;
+    padding: 15px 45px;
+    text-wrap: wrap;
+}
+
+.service-div-button:hover {
+    transform: all 0.6s ease;
+    background-color: white;
+    color: #264cd5;
+    border: 1px solid white;
+    outline: none;
+    box-shadow: none;
+}
+
+.click-button {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 120px;
+}
+
+.click-button-p-1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.click-button-p-2 {
+    margin-top: 15px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.click-button-button {
+    border-radius: 30px;
+    background-color: #264cd5;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    color: white;
+    box-shadow: 1px 1px 4px #b9b9ba;
+    text-shadow: .5px .5px 1px #b9b9ba;
+    transform: all 0.6s ease;
+    border: 2px solid #264cd5;
+    outline: none;
+    margin-top: 30px;
+    text-decoration: None;
+    padding: 15px 60px;
+    text-wrap: wrap;
+}
+
+.click-button-button:hover {
+    transform: all 0.6s ease;
+    background-color: white;
+    color: #264cd5;
+    border: 2px solid #264cd5;
+    text-shadow: none;
+    outline: none;
+    box-shadow: none;
+}
+
+@media (max-width: 1100px) {
+
+    .service-div-container {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .service-div2 {
+        margin-left: 30px;
+    }
+
+    .service-div3 {
+        margin-left: 30px;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 825px) {
+
+    .service-div1 {
+        margin: 0;
+    }
+
+    .service-div2 {
+        margin: 0;
+    }
+
+    .service-div3 {
+        margin: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .services-h1 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 450px) {
+    .services-h1 {
+        font-size: 36px;
+    }
+
+    .service-div1,
+    .service-div2,
+    .service-div3 {
+        height: 850px;
+    }
+
+    .click-button {
+        width: 90%;
+        margin: auto;
+        margin-bottom: 120px;
+    }
+
+    .click-button-p-1 {
+        font-size: 20px;
+    }
+
+    .click-button-p-2 {
+        font-size: 18px;
+    }
+
+    .click-button-button {
+        font-size: 18px;
+        padding: 10px 30px;
+    }
+}
+
+@media (max-width: 376px) {
+
+    .service-div1,
+    .service-div2,
+    .service-div3 {
+        height: 950px;
+    }
+
+    .service-div-button {
+        font-size: 16px;
+        padding: 10px 25px;
+    }
+}

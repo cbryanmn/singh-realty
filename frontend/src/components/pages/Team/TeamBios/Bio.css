@@ -1,0 +1,111 @@
+.back {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: darkslategray;
+    margin-top: 20px;
+    margin-left: 120px;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.back .icon {
+    font-size: 15px;
+    color: #1c2237;
+    margin-right: 5px;
+}
+
+.bio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: auto;
+    padding-top: 0;
+    margin-top: 30px;
+    margin-bottom: 80px;
+}
+
+.headshot-img {
+    height: 270px;
+    width: auto;
+    border-radius: 50%;
+}
+
+.member-name-h1 {
+    color: #1c2237;
+    font-size: 33px;
+    margin-bottom: 3px;
+    margin-top: 30px;
+}
+
+.member-title {
+    font-family: 'Montserrat', sans-serif;
+    color: darkslategray;
+    font-size: 16px;
+    font-style: italic;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.bio {
+    font-family: 'Nunito', sans-serif;
+    color: #1c2237;
+    font-size: 17px;
+    text-align: center;
+    width: 85%;
+}
+
+.member-phone {
+    font-family: 'Nunito', sans-serif;
+    margin-top: 24px;
+    color: darkslategray;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.member-email {
+    font-family: 'Nunito', sans-serif;
+    margin-top: 3px;
+    color: darkslategray;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+@media (max-width: 1400px) {
+
+    .back {
+        margin-left: 100px;
+    }
+}
+
+@media (max-width: 1235px) {
+
+    .back {
+        margin-left: 60px;
+    }
+
+    img {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .back {
+        margin-left: 20px;
+    }
+
+    .member-name-h1 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .member-name-h1 {
+        font-size: 36px;
+    }
+}
