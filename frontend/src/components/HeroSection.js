@@ -7,7 +7,7 @@ function HeroSection() {
         <div className="hero-outer-container">
             <div className="hero-background-container">
                 <video autoPlay loop muted playsInline>
-                    <source src="videos/houses-video.mp4" type="video/mp4" />
+                    <source src="videos/houses-video-compressed.mp4" type="video/mp4" />
                 </video>
             </div>
             <div className="hero-header">
