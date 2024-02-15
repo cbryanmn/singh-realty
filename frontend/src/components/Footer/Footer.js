@@ -36,8 +36,7 @@ function Footer() {
         }
 
         try {
-            const apiBaseUrl = process.env.REACT_APP_API_URL || '';
-            const response = await axios.post(`${apiBaseUrl}/api/footer-contact`, formData);
+            const response = await axios.post(`https://singh-realty-backend-168deb75ac7a.herokuapp.com/api/footer-contact`, formData);
             console.log('Form submitted successfully', response.data);
             setIsSubmitted(true);
         } catch (error) {
