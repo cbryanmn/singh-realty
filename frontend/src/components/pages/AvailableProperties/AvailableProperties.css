@@ -340,9 +340,9 @@ input[type="number"] {
     }
 }
 
-@media (max-width: 1235px) {
+@media (max-width: 1300px) {
 
-.sf-rent-sqft-container {
+    .sf-rent-sqft-container {
         flex-direction: column;
         align-items: center;
     }
@@ -353,7 +353,9 @@ input[type="number"] {
         display: flex;
         flex-direction: column;
     }
-    
+
+@media (max-width: 1235px) {
+
     .sr-box {
         flex-direction: column;
         padding: 40px;
