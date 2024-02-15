@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../AvailableProperties/AvailableProperties.css';
+import ImageModal from './ImageModal';
 
-function PropertyList() {
+function AvailableProperties() {
     const [searchResults, setSearchResults] = useState([]);
     const [properties, setProperties] = useState([]);
+    const [searchPerformed, setSearchPerformed] = useState(false);
+    const [searchKey, setSearchKey] = useState(0);
 
     const [selectedBedrooms, setSelectedBedrooms] = useState('');
     const [selectedBathrooms, setSelectedBathrooms] = useState('');
@@ -22,56 +26,83 @@ function PropertyList() {
     const fetchProperties = async () => {
         try {
             const response = await axios.get('http://localhost:3000/api/properties');
-            setProperties(response.data);
+            const propertiesWithCurrentImg = response.data.map(property => ({
+                ...property,
+                currentImg: property.img
+            }));
+            setProperties(propertiesWithCurrentImg);
         } catch (error) {
             console.error('Error fetching data: ', error);
         }
+    };
+
+    const handleImageClick = (property, imgUrl) => {
+        setProperties(prevProperties =>
+            prevProperties.map(p =>
+                p.id === property.id ? { ...p, currentImg: imgUrl } : p
+            )
+        );
+    };
+
+    const isEqual = (array1, array2) => {
+        return JSON.stringify(array1) === JSON.stringify(array2);
     };
 
     const handleSearch = async () => {
+        setSearchPerformed(true);
+        setSearchResults([]);
+
+        const query = {};
+        if (selectedBedrooms) query.bedrooms = selectedBedrooms;
+        if (selectedBathrooms) query.bathrooms = selectedBathrooms;
+        if (selectedUnitType) query.unitType = selectedUnitType;
+        if (selectedZipCode) query.zipCode = selectedZipCode;
+        if (selectedGroundFloor) query.groundFloor = selectedGroundFloor === 'true';
+        if (selectedMinRent) query.minRent = selectedMinRent;
+        if (selectedMaxRent) query.maxRent = selectedMaxRent;
+        if (selectedMinSqft) query.minSqft = selectedMinSqft;
+        if (selectedMaxSqft) query.maxSqft = selectedMaxSqft;
+
+        const queryString = Object.keys(query)
+            .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`)
+            .join('&');
+
         try {
-            const query = {};
-            if (selectedBedrooms) query.bedrooms = selectedBedrooms;
-            if (selectedBathrooms) query.bathrooms = selectedBathrooms;
-            if (selectedUnitType) query.unitType = selectedUnitType;
-            if (selectedZipCode) query.zipCode = selectedZipCode;
-            if (selectedGroundFloor) query.groundFloor = selectedGroundFloor === 'true';
-            if (selectedMinRent) query.minRent = selectedMinRent;
-            if (selectedMaxRent) query.maxRent = selectedMaxRent;
-            if (selectedMinSqft) query.minSqft = selectedMinSqft;
-            if (selectedMaxSqft) query.maxSqft = selectedMaxSqft;
-
-            const queryString = Object.keys(query)
-                .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`)
-                .join('&');
-
             const response = await axios.get(`http://localhost:3000/api/properties?${queryString}`);
             setSearchResults(response.data);
-            setProperties([]);
         } catch (error) {
             console.error('Error fetching data: ', error);
         }
     };
 
-    const renderProperties = (propertiesList) => {
-        return propertiesList.map((property, index) => (
-            <li key={index}>
-                <div><img src={property.img} alt={property.alt} /></div>
-                {property.unitType === 'apartment' && <div>Name: {property.name}</div>}
-                <div>Address: {property.address}, {property.citystatezip}</div>
-                {property.unitType === 'apartment' && <div>Unit: {property.unit}</div>}
-                <div>Bedrooms: {property.bedrooms}</div>
-                <div>Bathrooms: {property.bathrooms}</div>
-                <div>Square Feet: {property.sqft}</div>
-                <div>Rent: {property.rent}</div>
-                <div>Deposit: {property.deposit}</div>
-                <div>
-                    Amenities: {property.amenities.join(', ')}
-                </div>
-                <div>{property.description}</div>
-            </li >
-        ));
-    };
+    function PropertyItem({ property }) {
+        const formatCurrency = (value) => {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 0
+            }).format(value);
+        };
+
+        const formatDate = (dateString) => {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        };
+
+        const [currentImg, setCurrentImg] = useState(property.img);
+        const [isModalOpen, setIsModalOpen] = useState(false);
+        const [modalImageIndex, setModalImageIndex] = useState(0);
+
+
+        const handleImageClick = (imgUrl, index) => {
+            setCurrentImg(imgUrl);
+            setModalImageIndex(index);
+            setIsModalOpen(true);
+        };
+
+        const allImages = [property.img, ...property.moreImgs];
+
+        const alts = [property.alt, ...property.moreImgsAlt];
 
         return (
             <div className="search-results-list">
@@ -316,10 +347,10 @@ function PropertyList() {
                     searchPerformed ? (
                         searchResults.length > 0 ? renderProperties(searchResults) :
                             <div className="no-search-results">There are no search results to display.</div>
-                    ) : (renderProperties(properties)
-                    )}
+                    ) : renderProperties(properties)
+                }
             </div>
-        </div>
+        </div >
     )
 }
 
