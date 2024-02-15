@@ -41,6 +41,7 @@ function Footer() {
             setIsSubmitted(true);
         } catch (error) {
             console.error('Error:', error.response ? error.response.data : error);
+            setIsSubmitted(true);
         }
     };
 
