@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import '../AvailableProperties/AvailableProperties.css';
 import ImageModal from './ImageModal';
+import { propertiesData } from './AvailablePropertiesData';
 
 function AvailableProperties() {
     const [searchResults, setSearchResults] = useState([]);
-    const [properties, setProperties] = useState([]);
+    // const [properties, setProperties] = useState([]);
     const [searchPerformed, setSearchPerformed] = useState(false);
     const [searchKey, setSearchKey] = useState(0);
 
@@ -20,21 +21,21 @@ function AvailableProperties() {
     const [selectedMaxSqft, setSelectedMaxSqft] = useState('');
 
     useEffect(() => {
-        fetchProperties();
+        setSearchResults(propertiesData);
     }, []);
 
-    const fetchProperties = async () => {
-        try {
-            const response = await axios.get('https://singh-realty-backend-168deb75ac7a.herokuapp.com/api/properties');
-            const propertiesWithCurrentImg = response.data.map(property => ({
-                ...property,
-                currentImg: property.img
-            }));
-            setProperties(propertiesWithCurrentImg);
-        } catch (error) {
-            console.error('Error fetching data: ', error);
-        }
-    };
+    // const fetchProperties = async () => {
+    //     try {
+    //         const response = await axios.get('http://localhost:3000/api/properties');
+    //         const propertiesWithCurrentImg = response.data.map(property => ({
+    //             ...property,
+    //             currentImg: property.img
+    //         }));
+    //         setProperties(propertiesWithCurrentImg);
+    //     } catch (error) {
+    //         console.error('Error fetching data: ', error);
+    //     }
+    // };
 
     const handleImageClick = (property, imgUrl) => {
         setProperties(prevProperties =>
@@ -48,31 +49,27 @@ function AvailableProperties() {
         return JSON.stringify(array1) === JSON.stringify(array2);
     };
 
-    const handleSearch = async () => {
-        setSearchPerformed(true);
-        setSearchResults([]);
+    const handleSearch = () => {
 
-        const query = {};
-        if (selectedBedrooms) query.bedrooms = selectedBedrooms;
-        if (selectedBathrooms) query.bathrooms = selectedBathrooms;
-        if (selectedUnitType) query.unitType = selectedUnitType;
-        if (selectedZipCode) query.zipCode = selectedZipCode;
-        if (selectedGroundFloor) query.groundFloor = selectedGroundFloor === 'true';
-        if (selectedMinRent) query.minRent = selectedMinRent;
-        if (selectedMaxRent) query.maxRent = selectedMaxRent;
-        if (selectedMinSqft) query.minSqft = selectedMinSqft;
-        if (selectedMaxSqft) query.maxSqft = selectedMaxSqft;
+        const filtered = propertiesData.filter(property => {
 
-        const queryString = Object.keys(query)
-            .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`)
-            .join('&');
+            let matches = true;
 
-        try {
-            const response = await axios.get(`http://localhost:3000/api/properties?${queryString}`);
-            setSearchResults(response.data);
-        } catch (error) {
-            console.error('Error fetching data: ', error);
-        }
+            if (selectedBedrooms) query.bedrooms = selectedBedrooms;
+            if (selectedBathrooms) query.bathrooms = selectedBathrooms;
+            if (selectedUnitType) query.unitType = selectedUnitType;
+            if (selectedZipCode) query.zipCode = selectedZipCode;
+            if (selectedGroundFloor) query.groundFloor = selectedGroundFloor === 'true';
+            if (selectedMinRent) query.minRent = selectedMinRent;
+            if (selectedMaxRent) query.maxRent = selectedMaxRent;
+            if (selectedMinSqft) query.minSqft = selectedMinSqft;
+            if (selectedMaxSqft) query.maxSqft = selectedMaxSqft;
+
+            return matches;
+        });
+
+        setSearchResults(filtered);
+
     };
 
     function PropertyItem({ property }) {
@@ -347,10 +344,10 @@ function AvailableProperties() {
                     searchPerformed ? (
                         searchResults.length > 0 ? renderProperties(searchResults) :
                             <div className="no-search-results">There are no search results to display.</div>
-                    ) : renderProperties(properties)
-                }
+                    ) : (renderProperties(propertiesData)
+                    )}
             </div>
-        </div >
+        </div>
     )
 }
 
