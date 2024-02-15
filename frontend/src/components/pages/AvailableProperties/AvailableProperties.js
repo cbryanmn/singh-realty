@@ -52,7 +52,7 @@ function AvailableProperties() {
     const handleSearch = () => {
 
         const filtered = propertiesData.filter(property => {
-
+            let query = {}
             let matches = true;
 
             if (selectedBedrooms) query.bedrooms = selectedBedrooms;
