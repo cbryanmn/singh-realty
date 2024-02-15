@@ -25,7 +25,7 @@ function AvailableProperties() {
 
     const fetchProperties = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/api/properties');
+            const response = await axios.get('https://singh-realty-backend-168deb75ac7a.herokuapp.com/api/properties');
             const propertiesWithCurrentImg = response.data.map(property => ({
                 ...property,
                 currentImg: property.img
