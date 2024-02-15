@@ -15,7 +15,7 @@ function Navbar() {
     const closeMobileMenu = () => setClick(false);
 
     const showButton = () => {
-        if (window.innerWidth <= 1200) {
+        if (window.innerWidth <= 1400) {
             setButton(false);
         } else {
             setButton(true);
@@ -23,19 +23,19 @@ function Navbar() {
     };
 
     const toggleDropdown = () => {
-        if (window.innerWidth <= 1200) {
+        if (window.innerWidth <= 1400) {
             setDropdown(!dropdown);
         }
     };
 
     const handleHover = () => {
-        if (window.innerWidth > 1200) {
+        if (window.innerWidth > 1400) {
             setDropdown(true);
         }
     };
 
     const handleHoverLeave = () => {
-        if (window.innerWidth > 1200) {
+        if (window.innerWidth > 1400) {
             setDropdown(false);
         }
     };
