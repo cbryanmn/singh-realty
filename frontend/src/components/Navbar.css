@@ -164,6 +164,7 @@
         text-align: center;
         padding-top: 2rem;
         max-width: 150px;
+        margin: auto;
         display: table;
         font-family: 'Montserrat', sans-serif;
     }
