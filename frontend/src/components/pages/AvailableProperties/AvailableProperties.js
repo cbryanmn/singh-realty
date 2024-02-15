@@ -6,7 +6,7 @@ import { propertiesData } from './AvailablePropertiesData';
 
 function AvailableProperties() {
     const [searchResults, setSearchResults] = useState([]);
-    // const [properties, setProperties] = useState([]);
+    const [properties, setProperties] = useState([]);
     const [searchPerformed, setSearchPerformed] = useState(false);
     const [searchKey, setSearchKey] = useState(0);
 
