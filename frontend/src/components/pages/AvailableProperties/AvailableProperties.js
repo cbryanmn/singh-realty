@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-import '../AvailableProperties/AvailableProperties.css';
-import ImageModal from './ImageModal';
-import { propertiesData } from './AvailablePropertiesData';
+import axios from 'axios';
 
-function AvailableProperties() {
+function PropertyList() {
     const [searchResults, setSearchResults] = useState([]);
     const [properties, setProperties] = useState([]);
-    const [searchPerformed, setSearchPerformed] = useState(false);
-    const [searchKey, setSearchKey] = useState(0);
 
     const [selectedBedrooms, setSelectedBedrooms] = useState('');
     const [selectedBathrooms, setSelectedBathrooms] = useState('');
@@ -21,40 +16,21 @@ function AvailableProperties() {
     const [selectedMaxSqft, setSelectedMaxSqft] = useState('');
 
     useEffect(() => {
-        setSearchResults(propertiesData);
+        fetchProperties();
     }, []);
 
-    // const fetchProperties = async () => {
-    //     try {
-    //         const response = await axios.get('http://localhost:3000/api/properties');
-    //         const propertiesWithCurrentImg = response.data.map(property => ({
-    //             ...property,
-    //             currentImg: property.img
-    //         }));
-    //         setProperties(propertiesWithCurrentImg);
-    //     } catch (error) {
-    //         console.error('Error fetching data: ', error);
-    //     }
-    // };
-
-    const handleImageClick = (property, imgUrl) => {
-        setProperties(prevProperties =>
-            prevProperties.map(p =>
-                p.id === property.id ? { ...p, currentImg: imgUrl } : p
-            )
-        );
+    const fetchProperties = async () => {
+        try {
+            const response = await axios.get('http://localhost:3000/api/properties');
+            setProperties(response.data);
+        } catch (error) {
+            console.error('Error fetching data: ', error);
+        }
     };
 
-    const isEqual = (array1, array2) => {
-        return JSON.stringify(array1) === JSON.stringify(array2);
-    };
-
-    const handleSearch = () => {
-
-        const filtered = propertiesData.filter(property => {
-            let query = {}
-            let matches = true;
-
+    const handleSearch = async () => {
+        try {
+            const query = {};
             if (selectedBedrooms) query.bedrooms = selectedBedrooms;
             if (selectedBathrooms) query.bathrooms = selectedBathrooms;
             if (selectedUnitType) query.unitType = selectedUnitType;
@@ -65,41 +41,37 @@ function AvailableProperties() {
             if (selectedMinSqft) query.minSqft = selectedMinSqft;
             if (selectedMaxSqft) query.maxSqft = selectedMaxSqft;
 
-            return matches;
-        });
+            const queryString = Object.keys(query)
+                .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`)
+                .join('&');
 
-        setSearchResults(filtered);
-
+            const response = await axios.get(`http://localhost:3000/api/properties?${queryString}`);
+            setSearchResults(response.data);
+            setProperties([]);
+        } catch (error) {
+            console.error('Error fetching data: ', error);
+        }
     };
 
-    function PropertyItem({ property }) {
-        const formatCurrency = (value) => {
-            return new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                maximumFractionDigits: 0
-            }).format(value);
-        };
-
-        const formatDate = (dateString) => {
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            return new Date(dateString).toLocaleDateString('en-US', options);
-        };
-
-        const [currentImg, setCurrentImg] = useState(property.img);
-        const [isModalOpen, setIsModalOpen] = useState(false);
-        const [modalImageIndex, setModalImageIndex] = useState(0);
-
-
-        const handleImageClick = (imgUrl, index) => {
-            setCurrentImg(imgUrl);
-            setModalImageIndex(index);
-            setIsModalOpen(true);
-        };
-
-        const allImages = [property.img, ...property.moreImgs];
-
-        const alts = [property.alt, ...property.moreImgsAlt];
+    const renderProperties = (propertiesList) => {
+        return propertiesList.map((property, index) => (
+            <li key={index}>
+                <div><img src={property.img} alt={property.alt} /></div>
+                {property.unitType === 'apartment' && <div>Name: {property.name}</div>}
+                <div>Address: {property.address}, {property.citystatezip}</div>
+                {property.unitType === 'apartment' && <div>Unit: {property.unit}</div>}
+                <div>Bedrooms: {property.bedrooms}</div>
+                <div>Bathrooms: {property.bathrooms}</div>
+                <div>Square Feet: {property.sqft}</div>
+                <div>Rent: {property.rent}</div>
+                <div>Deposit: {property.deposit}</div>
+                <div>
+                    Amenities: {property.amenities.join(', ')}
+                </div>
+                <div>{property.description}</div>
+            </li >
+        ));
+    };
 
         return (
             <div className="search-results-list">
@@ -344,7 +316,7 @@ function AvailableProperties() {
                     searchPerformed ? (
                         searchResults.length > 0 ? renderProperties(searchResults) :
                             <div className="no-search-results">There are no search results to display.</div>
-                    ) : (renderProperties(propertiesData)
+                    ) : (renderProperties(properties)
                     )}
             </div>
         </div>
