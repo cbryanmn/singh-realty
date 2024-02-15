@@ -25,6 +25,13 @@
     transition: all 0.3s ease-out;
 }
 
+.btn--outline:hover {
+    transition: all 0.3s ease-out;
+    background: #fff;
+    color: #242424;
+}
+    
+
 .btn--mobile {
     text-align: center;
     border-radius: 4px;
