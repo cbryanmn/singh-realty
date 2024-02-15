@@ -21,7 +21,7 @@ function PropertyList() {
 
     const fetchProperties = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/api/properties');
+            const response = await axios.get('https://singh-realty-backend-168deb75ac7a.herokuapp.com/api/properties');
             setProperties(response.data);
         } catch (error) {
             console.error('Error fetching data: ', error);
@@ -45,7 +45,7 @@ function PropertyList() {
                 .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`)
                 .join('&');
 
-            const response = await axios.get(`http://localhost:3000/api/properties?${queryString}`);
+            const response = await axios.get(`https://singh-realty-backend-168deb75ac7a.herokuapp.com/api/properties?${queryString}`);
             setSearchResults(response.data);
             setProperties([]);
         } catch (error) {
