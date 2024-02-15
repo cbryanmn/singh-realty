@@ -432,6 +432,8 @@ input[type="number"] {
     .sf-rent-container,
     .sf-sqft-container {
         width: 100%;
+        display: flex;
+        flex-direction: column;
     }
 
     .sf-am-i-row-top,
