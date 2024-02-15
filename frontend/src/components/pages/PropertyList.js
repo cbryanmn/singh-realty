@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { propertiesData } from './AvailableProperties/AvailablePropertiesData';
 
 function PropertyList() {
     const [searchResults, setSearchResults] = useState([]);
@@ -15,42 +15,83 @@ function PropertyList() {
     const [selectedMinSqft, setSelectedMinSqft] = useState('');
     const [selectedMaxSqft, setSelectedMaxSqft] = useState('');
 
+    // useEffect(() => {
+    //     fetchProperties();
+    // }, []);
+
+    // const fetchProperties = async () => {
+    //     try {
+    //         const response = await axios.get('http://localhost:3000/api/properties');
+    //         setProperties(response.data);
+    //     } catch (error) {
+    //         console.error('Error fetching data: ', error);
+    //     }
+    // };
+
+    // const handleSearch = async () => {
+    //     try {
+    //         const query = {};
+    //         if (selectedBedrooms) query.bedrooms = selectedBedrooms;
+    //         if (selectedBathrooms) query.bathrooms = selectedBathrooms;
+    //         if (selectedUnitType) query.unitType = selectedUnitType;
+    //         if (selectedZipCode) query.zipCode = selectedZipCode;
+    //         if (selectedGroundFloor) query.groundFloor = selectedGroundFloor === 'true';
+    //         if (selectedMinRent) query.minRent = selectedMinRent;
+    //         if (selectedMaxRent) query.maxRent = selectedMaxRent;
+    //         if (selectedMinSqft) query.minSqft = selectedMinSqft;
+    //         if (selectedMaxSqft) query.maxSqft = selectedMaxSqft;
+
+    //         const queryString = Object.keys(query)
+    //             .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`)
+    //             .join('&');
+
+    //         const response = await axios.get(`http://localhost:3000/api/properties?${queryString}`);
+    //         setSearchResults(response.data);
+    //         setProperties([]);
+    //     } catch (error) {
+    //         console.error('Error fetching data: ', error);
+    //     }
+    // };
+
+    // const handleSearch = () => {
+    //     const filteredProperties = propertiesData.filter(property => {
+    //         let match = true;
+    //         if (selectedBedrooms && property.bedrooms !== selectedBedrooms) match = false;
+    //         if (selectedBathrooms && property.bathrooms !== selectedBathrooms) match = false;
+    //         if (selectedUnitType && property.unitType !== selectedUnitType) match = false;
+    //         if (selectedZipCode && property.zipCode !== selectedZipCode) match = false;
+    //         if (selectedGroundFloor && property.groundFloor !== (selectedGroundFloor === 'true')) match = false;
+    //         if (selectedMinRent && property.rent < selectedMinRent) match = false;
+    //         if (selectedMaxRent && property.rent > selectedMaxRent) match = false;
+    //         if (selectedMinSqft && property.sqft < selectedMinSqft) match = false;
+    //         if (selectedMaxSqft && property.sqft > selectedMaxSqft) match = false;
+    //         return match;
+    //     });
+    //     setSearchResults(filteredProperties);
+    // };
+
     useEffect(() => {
-        fetchProperties();
+        setProperties(propertiesData);
     }, []);
 
-    const fetchProperties = async () => {
-        try {
-            const response = await axios.get('https://singh-realty-backend-168deb75ac7a.herokuapp.com/api/properties');
-            setProperties(response.data);
-        } catch (error) {
-            console.error('Error fetching data: ', error);
-        }
-    };
+    const handleSearch = () => {
+        const filtered = properties.filter(property => {
+            let matches = true;
 
-    const handleSearch = async () => {
-        try {
-            const query = {};
-            if (selectedBedrooms) query.bedrooms = selectedBedrooms;
-            if (selectedBathrooms) query.bathrooms = selectedBathrooms;
-            if (selectedUnitType) query.unitType = selectedUnitType;
-            if (selectedZipCode) query.zipCode = selectedZipCode;
-            if (selectedGroundFloor) query.groundFloor = selectedGroundFloor === 'true';
-            if (selectedMinRent) query.minRent = selectedMinRent;
-            if (selectedMaxRent) query.maxRent = selectedMaxRent;
-            if (selectedMinSqft) query.minSqft = selectedMinSqft;
-            if (selectedMaxSqft) query.maxSqft = selectedMaxSqft;
+            if (selectedBedrooms && property.bedrooms !== +selectedBedrooms) matches = false;
+            if (selectedBathrooms && property.bathrooms !== +selectedBathrooms) matches = false;
+            if (selectedUnitType && property.unitType !== selectedUnitType) matches = false;
+            if (selectedZipCode && property.zipCode !== selectedZipCode) matches = false;
+            if (selectedGroundFloor && property.groundFloor !== (selectedGroundFloor === 'true')) matches = false;
+            if (selectedMinRent && property.rent < selectedMinRent) matches = false;
+            if (selectedMaxRent && property.rent > selectedMaxRent) matches = false;
+            if (selectedMinSqft && property.sqft < selectedMinSqft) matches = false;
+            if (selectedMaxSqft && property.sqft > selectedMaxSqft) matches = false;
 
-            const queryString = Object.keys(query)
-                .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`)
-                .join('&');
+            return matches;
+        });
 
-            const response = await axios.get(`https://singh-realty-backend-168deb75ac7a.herokuapp.com/api/properties?${queryString}`);
-            setSearchResults(response.data);
-            setProperties([]);
-        } catch (error) {
-            console.error('Error fetching data: ', error);
-        }
+        setSearchResults(filtered);
     };
 
     const renderProperties = (propertiesList) => {
