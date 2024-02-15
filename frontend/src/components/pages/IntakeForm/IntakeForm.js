@@ -31,8 +31,7 @@ function IntakeForm() {
         }
 
         try {
-            const apiBaseUrl = process.env.REACT_APP_API_URL || '';
-            const response = await axios.post(`${apiBaseUrl}/api/contact`, formData);
+            const response = await axios.post(`https://singh-realty-backend-168deb75ac7a.herokuapp.com/api/contact`, formData);
             console.log('Form submitted successfully', response.data);
             setIsSubmitted(true);
         } catch (error) {
